@@ -21,7 +21,7 @@ Router_DMZ Configuration
 - Default-information originate: advertise default route to Core Switch
 - NAT/ACL: inside for VLANs, outside to ISP
 Full Router_DMZ configuration is available
-[configure.txt](https://github.com/user-attachments/files/23562765/configure.txt)
+
 
 SW_core1 Configuration
 - VLANs: 10 (IT), 11 (HR), 12 (Accounting)
@@ -34,4 +34,4 @@ Layer 3 Interfaces:
 - SVI VLAN 12: 192.168.12.2/24, HSRP 12 (192.168.12.1), DHCP relay 192.168.99.10
 - Routing: IP routing enabled; OSPF router-id 1.1.1.1, networks 10.0.0.0/30, 192.168.10.0/24, 192.168.11.0/24, 192.168.12.0/24
 Full SW_core1 configuration is available
-[configure.txt](https://github.com/user-attachments/files/23562823/configure.txt)
+
