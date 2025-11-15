@@ -1,0 +1,43 @@
+ena
+conf t
+host Router_DMZ
+int e0/1
+ip add 10.0.0.2 255.255.255.252
+no sh
+!
+int e0/2
+ip add 10.1.0.2 255.255.255.252
+no sh
+!
+int e0/0.99
+encap dot 99
+ip add 192.168.99.1 255.255.255.0
+no sh
+!
+int e0/0
+no sh
+!
+int e0/3
+ip add 200.100.50.2 255.255.255.252
+no sh
+!
+ip route 0.0.0.0 0.0.0.0 200.100.50.1
+!
+router ospf 1
+router-id 3.3.3.3
+network 192.168.99.0 0.0.0.255 area 0
+network 10.0.0.0 0.0.0.3 area 0
+network 10.1.0.0 0.0.0.3 area 0
+network 200.100.50.0 0.0.0.3 area 0
+default-information originate
+!
+access-list 10 permit 192.168.10.0 0.0.0.127
+access-list 10 permit 192.168.11.0 0.0.0.31
+access-list 10 permit 192.168.11.0 0.0.0.255
+ip nat inside source list 10 interface e0/3 overload
+int range e0/1,e0/2
+ip nat inside
+int e0/3
+ip nat outside
+end
+wr 
