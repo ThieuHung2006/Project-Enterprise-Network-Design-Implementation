@@ -11,9 +11,12 @@ Lab project: Core–Distribution–Access network with VLANs, DMZ, ACL/NAT, HSRP
 - Verify end-to-end connectivity
 
 ## Network Topology
-<img width="1864" height="913" alt="project" src="https://github.com/user-attachments/assets/4d5c048b-714c-407f-9c5c-0299d74adb48" />
+## Network Topology
 
-<img width="594" height="177" alt="Table" src="https://github.com/user-attachments/assets/dd898172-db29-4c0e-a185-6b8dd90d5a68" />
+![Network Topology Diagram](https://github.com/user-attachments/assets/4d5c048b-714c-407f-9c5c-0299d74adb48)
+
+![Network Topology Table](https://github.com/user-attachments/assets/dd898172-db29-4c0e-a185-6b8dd90d5a68)
+
 *Network topology diagram and table here (add image or table if available)*
 
 ## Router_DMZ Configuration
