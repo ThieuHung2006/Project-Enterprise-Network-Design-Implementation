@@ -17,7 +17,7 @@ Lab project: Core–Distribution–Access network with VLANs, DMZ, ACL/NAT, HSRP
 
 ![Network Topology Table](https://github.com/user-attachments/assets/dd898172-db29-4c0e-a185-6b8dd90d5a68)
 
-*Network topology diagram and table here (add image or table if available)*
+*Network topology diagram and table
 
 ## Router_DMZ Configuration
 - Interfaces: e0/1, e0/2, e0/0.99, e0/3
