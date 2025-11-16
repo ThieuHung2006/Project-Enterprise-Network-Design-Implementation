@@ -1,41 +1,39 @@
-# Project-Enterprise-Network-Design-Implementation
+# Project: Enterprise Network Design & Implementation
+
 Lab project: Core–Distribution–Access network with VLANs, DMZ, ACL/NAT, HSRP, EtherChannel, OSPF
 
-Objective
-- VLAN segmentation cho IT, HR, Accounting
-- VLSM-based subnetting để tối ưu IP
-- DMZ gồm DNS, Mail, DHCP servers
-- Kết nối ISP qua OSPF
-- Kiểm thử end-to-end thành công, đảm bảo redundancy & high availability
-- Cấu hình SW_core HSRP, Spanning-Tree, EtherChannel LACP,OSPF
+## Objective
+- Implement VLAN segmentation for IT, HR, and Accounting departments
+- Optimize IP usage using VLSM-based subnetting
+- Configure DMZ with DNS, Mail, and DHCP servers
+- Connect to ISP using OSPF
+- Ensure redundancy and high availability through HSRP and EtherChannel
+- Verify end-to-end connectivity
 
-Network Topology<img width="1864" height="913" alt="project" src="https://github.com/user-attachments/assets/2fbd61f2-50e2-4127-a9e1-f378bc048a14" />
+## Network Topology
+*Network topology diagram and table here (add image or table if available)*
 
-Network Topology
-<img width="594" height="177" alt="Table" src="https://github.com/user-attachments/assets/88e98436-fc15-47e5-9aca-1dd6e707e377" />
-
-Router_DMZ Configuration
+## Router_DMZ Configuration
 - Interfaces: e0/1, e0/2, e0/0.99, e0/3
 - Default route: `ip route 0.0.0.0 0.0.0.0 200.100.50.1`
 - OSPF: router-id 3.3.3.3, networks 192.168.99.0, 10.0.0.0, 10.1.0.0, 200.100.50.0
 - Default-information originate: advertise default route to Core Switch
-- NAT/ACL: inside for VLANs, outside to ISP
-Full Router_DMZ configuration is available :Router_DMZ.txt
+- NAT/ACL: inside for VLANs, outside to ISP  
+Full configuration available: `Router_DMZ.txt`
 
-SW_core1 Configuration
+## SW_core1 Configuration
 - VLANs: 10 (IT), 11 (HR), 12 (Accounting)
 - Trunk Ports: e0/3 trunked VLAN 10; e1/0 trunked VLANs 11 & 12
 - EtherChannel (LACP): Port-channel 1 (e0/0–2) for Core redundancy with SW_core2
-Layer 3 Interfaces:
-- e1/1: 10.0.0.1/30 link to Router_DMZ
-- SVI VLAN 10: 192.168.10.2/24, HSRP 10 (192.168.10.1), DHCP relay 192.168.99.10
-- SVI VLAN 11: 192.168.11.2/24, HSRP 11 (192.168.11.1), DHCP relay 192.168.99.10
-- SVI VLAN 12: 192.168.12.2/24, HSRP 12 (192.168.12.1), DHCP relay 192.168.99.10
-- Routing: IP routing enabled; OSPF router-id 1.1.1.1, networks 10.0.0.0/30, 192.168.10.0/24, 192.168.11.0/24, 192.168.12.0/24
-Full SW_core1 configuration is available: SW_core_config.txt
+- Layer 3 Interfaces:
+  - e1/1: 10.0.0.1/30 link to Router_DMZ
+  - SVI VLAN 10: 192.168.10.2/24, HSRP 10 (192.168.10.1), DHCP relay 192.168.99.10
+  - SVI VLAN 11: 192.168.11.2/24, HSRP 11 (192.168.11.1), DHCP relay 192.168.99.10
+  - SVI VLAN 12: 192.168.12.2/24, HSRP 12 (192.168.12.1), DHCP relay 192.168.99.10
+- Routing: IP routing enabled; OSPF router-id 1.1.1.1, networks 10.0.0.0/30, 192.168.10.0/24, 192.168.11.0/24, 192.168.12.0/24  
+Full configuration available: `SW_core1_config.txt`
 
-
-Verification
+## Verification
 - Show VLANs: `show vlan brief`
 - Show Trunks: `show interfaces trunk`
 - Show EtherChannel: `show etherchannel summary`
@@ -45,18 +43,21 @@ Verification
   - From PC VLAN 11 → 192.168.12.1 (Accounting gateway)
   - Internet access via NAT → 8.8.8.8
 
- Conclusion
-- Triển khai VLAN, Trunk, EtherChannel (LACP) và HSRP cho Core–Distribution–Access network
-- Thiết lập DMZ với NAT/ACL cho DNS, Mail, và DHCP servers
-- Kết nối ISP qua point-to-point OSPF, quảng bá default route
-- Kiểm thử end-to-end thành công, đảm bảo redundancy và high availability
+## Conclusion
+- VLAN, Trunk, EtherChannel (LACP), and HSRP successfully implemented for Core–Distribution–Access network
+- DMZ configured with NAT/ACL for DNS, Mail, and DHCP servers
+- ISP connected via point-to-point OSPF with default route advertised
+- End-to-end testing completed successfully, ensuring redundancy and high availability
 
-Learning / Key Takeaways
-- Hiểu rõ mô hình Core–Distribution–Access và cách triển khai mạng doanh nghiệp.
-- Triển khai VLAN segmentation và VLSM subnetting để tối ưu IP cho các phòng ban.
-- Cấu hình Layer 3 SVI, Trunk, EtherChannel (LACP) và Spanning-Tree để đảm bảo redundancy & high availability.
-- Triển khai HSRP để dự phòng gateway cho VLAN.
-- Thiết lập DMZ với NAT/ACL cho các server (DNS, Mail, DHCP) và quản lý truy cập an toàn.
-- Kết nối ISP qua OSPF point-to-point và quảng bá default route tới mạng nội bộ.
-- Kiểm thử end-to-end connectivity, phát hiện và xử lý vấn đề routing, NAT, VLAN.
-- Nâng cao kỹ năng đọc topologies, viết lab report và cấu hình thiết bị mạng thực tế.
+## Lessons Learned / Key Takeaways
+- Understand Core–Distribution–Access network design and enterprise network deployment
+- Implement VLAN segmentation and VLSM subnetting to optimize IP usage
+- Configure Layer 3 SVI, Trunk, EtherChannel (LACP), and Spanning-Tree for redundancy & high availability
+- Deploy HSRP for gateway redundancy
+- Set up DMZ with NAT/ACL for server access and security
+- Connect ISP via OSPF point-to-point and advertise default route
+- Conduct end-to-end connectivity testing and troubleshooting
+- Improve skills in reading topologies, writing lab reports, and configuring real network devices
+
+## About
+Lab project: Core–Distribution–Access network with VLANs, DMZ, ACL/NAT, HSRP, EtherChannel, OSPF
