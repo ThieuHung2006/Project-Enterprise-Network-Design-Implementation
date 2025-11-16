@@ -44,6 +44,8 @@ Full configuration available: `SW_core1_config.txt`
 - Show Trunks: `show interfaces trunk`
 - Show EtherChannel: `show etherchannel summary`
 - Show NAT translations: `show ip nat translations`
+- Verify HSRP status: `show standby brief`
+- Verify OSPF neighbors: `show ip ospf neighbor`
 - End-to-end ping tests:
   - From PC VLAN 10 → 192.168.99.10 (DNS)
   - From PC VLAN 11 → 192.168.12.1 (Accounting gateway)
